@@ -18,6 +18,28 @@
 		<targetJdk>1.6</targetJdk>
 	</properties>
 
+	<developers>
+		<developer>
+			<id>yanick</id>
+			<name>Yanick van Langeraad</name>
+			<email>y.vanlangeraad [AT] student.tudelft.nl</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>rick</id>
+			<name>Rick van Hattem</name>
+			<email>r.d.t.vanHattem [AT] studentltudelft.nl</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+
+
 	<repositories>
 	  <repository>
 	    <id>cloudbees-private-release-repository</id>
