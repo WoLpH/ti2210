@@ -10,7 +10,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * This class tests the behaviour of positioning out of bounds
+ * This class tests the behaviour of positioning out of bounds.
  */
 @RunWith(Parameterized.class)
 public class BoardBoundsTest {

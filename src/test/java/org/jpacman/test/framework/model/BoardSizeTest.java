@@ -10,7 +10,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * This class tests the behaviour of positioning with 0 sized boards
+ * This class tests the behaviour of positioning with 0 sized boards.
  */
 @RunWith(Parameterized.class)
 public class BoardSizeTest {
