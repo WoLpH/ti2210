@@ -10,7 +10,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * @author rick This class tests the behaviour of positioning out of bounds
+ * This class tests the behaviour of positioning out of bounds
  */
 @RunWith(Parameterized.class)
 public class BoardBoundsTest {
@@ -21,19 +21,15 @@ public class BoardBoundsTest {
 	 * Create a new test case obtaining the tile from starting point (x, y) on a
 	 * board with the given width and height.
 	 * 
-	 * @param width
-	 *            Width of the board
-	 * @param height
-	 *            Height of the board
 	 * @param x
 	 *            X position
 	 * @param y
 	 *            Y position
 	 */
-	public BoardBoundsTest(int width, int height, int x, int y) {
+	public BoardBoundsTest(int x, int y) {
 		startx = x;
 		starty = y;
-		board = new Board(width, height);
+		board = new Board(1, 1);
 	}
 
 	/**
@@ -54,10 +50,8 @@ public class BoardBoundsTest {
 	public static Collection<Object[]> data() {
 		Object[][] values = new Object[][] {
 				// Simply pick any point that's out of bounds
-				{ 1, 1, -1, -1 }, { 1, 1, -1, 0 }, { 1, 1, -1, 1 },
-				{ 1, 1, 0, -1 }, { 1, 1, 0, 1 }, { 1, 1, 1, -1 },
-				{ 1, 1, 1, 0 }, { 1, 1, 1, 1 }, { 1, 1, -1, 0 },
-				{ 0, 0, 0, 0 }, { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, };
+				{ -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 },
+				{ 1, -1 }, { 1, 0 }, { 1, 1 }, { -1, 0 } };
 		return Arrays.asList(values);
 	}
 
