@@ -7,6 +7,7 @@ import org.jpacman.framework.factory.FactoryException;
 import org.jpacman.framework.model.Direction;
 import org.jpacman.framework.model.IBoardInspector;
 import org.jpacman.framework.model.Tile;
+import org.jpacman.framework.ui.PacmanInteraction;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +38,9 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	// Player tile on the board, the starting point.
 	private Tile playerTile;
 
+	// Player tile on the board, the starting point.
+	private Tile ghostTile;
+
 	/**
 	 * Setup the game, given a simpler map to improve controllability.
 	 * 
@@ -53,6 +57,7 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		foodTile = tileAt(0, 1);
 		playerTile = tileAt(1, 1);
 		wallTile = tileAt(1, 2);
+		ghostTile = tileAt(2, 1);
 	}
 
 	/**
@@ -95,7 +100,7 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	}
 
 	/**
-	 * Thest that a player failes to move through walls.
+	 * Test that a player failes to move through walls.
 	 */
 	@Test
 	public void test_S2_3_PlayerFailMove() {
@@ -109,6 +114,49 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 
 		/* If we are still at our current position, everything is ok */
 		assertEquals(playerTile, getPlayer().getTile());
+	}
+
+	/**
+	 * Test that a player dies when touching a ghost.
+	 */
+	@Test
+	public void test_S2_4_PlayerDie() {
+		/* initialize the engine */
+		getEngine().start();
+
+		/* Check if the tile contains a ghost and try to move to it */
+		assertEquals(IBoardInspector.SpriteType.GHOST, ghostTile.topSprite()
+				.getSpriteType());
+		movePlayer(Direction.RIGHT);
+
+		/*
+		 * If there is no player at the player tile and the player is now dead
+		 * and at the ghost location, it worked
+		 */
+		assertEquals(ghostTile, getPlayer().getTile());
+		assertEquals(null, playerTile.topSprite());
+		assertEquals(getEngine().getCurrentState(), PacmanInteraction.MatchState.LOST);
+		/* he's dead Jim */
+		assertFalse(getPlayer().isAlive());
+	}
+
+	/**
+	 * Test that a player wins when getting all food.
+	 */
+	@Test
+	public void test_S2_5_PlayerWin() {
+		/* initialize the engine */
+		getEngine().start();
+
+		/* Move to the food locations */
+		movePlayer(Direction.LEFT);
+		movePlayer(Direction.RIGHT);
+		movePlayer(Direction.UP);
+		movePlayer(Direction.RIGHT);
+		movePlayer(Direction.RIGHT);
+		
+		/* Yes, we are awesome! We've won :D */
+		assertEquals(getEngine().getCurrentState(), PacmanInteraction.MatchState.WON);
 	}
 
 	/**
