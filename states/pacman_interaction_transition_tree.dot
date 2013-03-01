@@ -1,0 +1,25 @@
+digraph finite_state_machine {
+    rankdir=LR;
+    size="8,5"
+    node [shape = box]; WON LOST;
+    node [shape = box]; PLAYING PAUSING;
+    node [shape = box; label = "PAUSING"]; PLAYING PAUSING_END;
+    node [style = invis]; INITIAL
+    INITIAL -> PAUSING;
+    
+    PAUSING -> PLAYING [label="start()"];
+
+    PLAYING -> PAUSING_END [label="stop()"];
+
+    PLAYING -> WON [label="up()"];
+    PLAYING -> WON [label="down()"];
+    PLAYING -> WON [label="left()"];
+    PLAYING -> WON [label="right()"];
+
+    PLAYING -> LOST [label="up()"];
+    PLAYING -> LOST [label="down()"];
+    PLAYING -> LOST [label="left()"];
+    PLAYING -> LOST [label="right()"];
+}
+
+
