@@ -118,8 +118,6 @@ public class PacmanInteractionTest {
 		MainUI ui = new MainUI();
 		ui.withBoard(board);
 		ui.initialize();
-		ui.withGhostController(new RandomGhostMover(ui.getGame()));
-		ui.createUI();
 		ui.start();
 		return ui;
 	}
