@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
+import org.jpacman.framework.controller.RandomGhostMover;
 import org.jpacman.framework.factory.FactoryException;
 import org.jpacman.framework.ui.PacmanInteraction.MatchState;
 import org.junit.Assert;
@@ -116,7 +117,9 @@ public class PacmanInteractionTest {
 		/* Setup the UI with the given board */
 		MainUI ui = new MainUI();
 		ui.withBoard(board);
-		ui.initializeNormalGame();
+		ui.initialize();
+		ui.withGhostController(new RandomGhostMover(ui.getGame()));
+		ui.createUI();
 		ui.start();
 		return ui;
 	}
