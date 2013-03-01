@@ -1,0 +1,49 @@
+digraph finite_state_machine {
+    rankdir=LR;
+    size="8,5"
+    node [shape = doublecircle]; WON LOST;
+    node [shape = circle]; PLAYING PAUSING;
+    node [style = invis]; INITIAL
+    INITIAL -> PAUSING;
+
+    WON -> WON [label="up()"];
+    WON -> WON [label="down()"];
+    WON -> WON [label="left()"];
+    WON -> WON [label="right()"];
+    WON -> WON [label="start()"];
+    WON -> WON [label="stop()"];
+
+    LOST -> LOST [label="up()"];
+    LOST -> LOST [label="down()"];
+    LOST -> LOST [label="left()"];
+    LOST -> LOST [label="right()"];
+    LOST -> LOST [label="start()"];
+    LOST -> LOST [label="stop()"];
+
+    PAUSING -> PAUSING [label="up()"];
+    PAUSING -> PAUSING [label="down()"];
+    PAUSING -> PAUSING [label="left()"];
+    PAUSING -> PAUSING [label="right()"];
+    PAUSING -> PAUSING [label="stop()"];
+
+    PAUSING -> PLAYING [label="start()"];
+
+    PLAYING -> PLAYING [label="up()"];
+    PLAYING -> PLAYING [label="down()"];
+    PLAYING -> PLAYING [label="left()"];
+    PLAYING -> PLAYING [label="right()"];
+    PLAYING -> PLAYING [label="start()"];
+
+    PLAYING -> PAUSING [label="stop()"];
+
+    PLAYING -> WON [label="up()"];
+    PLAYING -> WON [label="down()"];
+    PLAYING -> WON [label="left()"];
+    PLAYING -> WON [label="right()"];
+
+    PLAYING -> LOST [label="up()"];
+    PLAYING -> LOST [label="down()"];
+    PLAYING -> LOST [label="left()"];
+    PLAYING -> LOST [label="right()"];
+}
+
