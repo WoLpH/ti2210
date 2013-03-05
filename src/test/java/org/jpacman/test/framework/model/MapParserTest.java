@@ -18,7 +18,7 @@ import org.mockito.runners.MockitoJUnitRunner;
  **/
 @RunWith(MockitoJUnitRunner.class)
 public class MapParserTest{
-	@Mock private IGameFactory f;
+	private IGameFactory f;
 	private MapParser mp;
 	
 	public MapParserTest(){
