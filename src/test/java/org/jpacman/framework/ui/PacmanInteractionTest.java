@@ -4,7 +4,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
-import org.jpacman.framework.controller.RandomGhostMover;
 import org.jpacman.framework.factory.FactoryException;
 import org.jpacman.framework.ui.PacmanInteraction.MatchState;
 import org.junit.Assert;
