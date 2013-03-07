@@ -135,7 +135,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		 */
 		assertEquals(ghostTile, getPlayer().getTile());
 		assertEquals(null, playerTile.topSprite());
-		assertEquals(getEngine().getCurrentState(), PacmanInteraction.MatchState.LOST);
+		assertEquals(getEngine().getCurrentState(),
+				PacmanInteraction.MatchState.LOST);
 		/* he's dead Jim */
 		assertFalse(getPlayer().isAlive());
 	}
@@ -154,9 +155,10 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		movePlayer(Direction.UP);
 		movePlayer(Direction.RIGHT);
 		movePlayer(Direction.RIGHT);
-		
+
 		/* Yes, we are awesome! We've won :D */
-		assertEquals(getEngine().getCurrentState(), PacmanInteraction.MatchState.WON);
+		assertEquals(getEngine().getCurrentState(),
+				PacmanInteraction.MatchState.WON);
 	}
 
 	/**
