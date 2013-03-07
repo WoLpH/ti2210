@@ -95,7 +95,7 @@ public class MapParserTest {
 	 *       whether every sprite type gets added correctly. Here we test for
 	 *       the 'PLAYER' sprite.
 	 * @throws FactoryException
-	 *             TODO docs
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddPlayer() throws FactoryException {
@@ -111,7 +111,7 @@ public class MapParserTest {
 	 *       whether every sprite type gets added correctly. Here we test for
 	 *       the 'GHOST' sprite.
 	 * @throws FactoryException
-	 *             TODO docs
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddGhost() throws FactoryException {
@@ -126,7 +126,7 @@ public class MapParserTest {
 	 *       whether every sprite type gets added correctly. Here we test for
 	 *       the 'FOOD' sprite.
 	 * @throws FactoryException
-	 *             TODO docs
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddFood() throws FactoryException {
@@ -141,7 +141,7 @@ public class MapParserTest {
 	 *       whether every sprite type gets added correctly. Here we test for
 	 *       the 'WALL' sprite.
 	 * @throws FactoryException
-	 *             TODO docs
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddWall() throws FactoryException {
@@ -156,7 +156,7 @@ public class MapParserTest {
 	 *       whether every sprite type gets added correctly. Here we test if a
 	 *       tile truly stays empty when we try to add ' ', a.k.a. nothing.
 	 * @throws FactoryException
-	 *             TODO docs
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddEmpty() throws FactoryException {
@@ -171,7 +171,7 @@ public class MapParserTest {
 	 * @Test Test whether the Parser throws the right exception when we try to
 	 *       initialize an empty map.
 	 * @throws FactoryException
-	 *             TODO docs
+	 *             if input was in wrong format.
 	 */
 	@Test(expected = FactoryException.class)
 	public void badMapTest() throws FactoryException {
@@ -183,7 +183,7 @@ public class MapParserTest {
 	 * @Test Test whether the Parser throws the right exception when we try to
 	 *       initialize a map with an illegal spriteCode (in this case, 'S').
 	 * @throws FactoryException
-	 *             TODO docs
+	 *             if input was in wrong format.
 	 */
 	@Test(expected = FactoryException.class)
 	public void badCharTest() throws FactoryException {
