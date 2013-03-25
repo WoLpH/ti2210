@@ -8,8 +8,16 @@ import org.jpacman.framework.ui.UndoablePacman;
  * 
  */
 public class UndoStoryTest extends MovePlayerStoryTest {
+	private UndoablePacman pacman;
+
 	@Override
 	public MainUI makeUI() {
-		return new UndoablePacman();
+		pacman = new UndoablePacman();
+		return pacman;
+	}
+	
+	@Override
+	protected MainUI getUI() {
+		return pacman;
 	}
 }
