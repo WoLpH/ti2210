@@ -13,10 +13,9 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Essentially the same as the BoardBoundsTest, but uses different methods.
- * Didn't see we had to test the withinBorders method aswell, kind of pointless
- * to test the same thing twice I guess. Although... as they say, measure twice,
- * cut once.
+ * Essentially the same as the BoardBoundsTest, but uses different methods. Didn't see we had to
+ * test the withinBorders method aswell, kind of pointless to test the same thing twice I guess.
+ * Although... as they say, measure twice, cut once.
  */
 @RunWith(Parameterized.class)
 public class WithinBordersTest {
@@ -24,8 +23,8 @@ public class WithinBordersTest {
 	private final Board board;
 
 	/**
-	 * Create a new test case obtaining the tile from starting point (x, y) on a
-	 * board with the given width and height.
+	 * Create a new test case obtaining the tile from starting point (x, y) on a board with the
+	 * given width and height.
 	 * 
 	 * @param x
 	 *            X position
@@ -39,8 +38,8 @@ public class WithinBordersTest {
 	}
 
 	/**
-	 * The actual test case, we expect failure since we make a board that
-	 * doesn't contain the position.
+	 * The actual test case, we expect failure since we make a board that doesn't contain the
+	 * position.
 	 */
 	@Test
 	public void testTileAtPosition() {
@@ -48,10 +47,9 @@ public class WithinBordersTest {
 	}
 
 	/**
-	 * Also test the result when we expect it to succeed Kind of pointless to
-	 * test this in all cases, but creating an entirely different test seems
-	 * pointless too and using a parameterized class is nice. This test succeeds
-	 * in near-zero time anyway.
+	 * Also test the result when we expect it to succeed Kind of pointless to test this in all
+	 * cases, but creating an entirely different test seems pointless too and using a parameterized
+	 * class is nice. This test succeeds in near-zero time anyway.
 	 */
 	@Test
 	public void testValidTile() {
