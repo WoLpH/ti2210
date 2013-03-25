@@ -70,6 +70,22 @@ public class UndoButtonPanel extends ButtonPanel {
 	}
 
 	/**
+	 * Redo the last undo'ed move.
+	 */
+	public void redo() {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * Undo the last move.
+	 */
+	public void undo() {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
 	 * Set the listener capable of exercising the requested events.
 	 * 
 	 * @param pi
