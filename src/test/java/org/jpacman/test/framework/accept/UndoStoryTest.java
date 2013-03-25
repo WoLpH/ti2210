@@ -11,13 +11,13 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	private UndoablePacman pacman;
 
 	@Override
-	public MainUI makeUI() {
-		pacman = new UndoablePacman();
-		return pacman;
+	protected MainUI getUI() {
+		return this.pacman;
 	}
 
 	@Override
-	protected MainUI getUI() {
-		return pacman;
+	public MainUI makeUI() {
+		this.pacman = new UndoablePacman();
+		return this.pacman;
 	}
 }
