@@ -15,7 +15,7 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 		pacman = new UndoablePacman();
 		return pacman;
 	}
-	
+
 	@Override
 	protected MainUI getUI() {
 		return pacman;
