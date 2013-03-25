@@ -20,9 +20,8 @@ import org.junit.runner.RunWith;
 @RunWith(Theories.class)
 public class PacmanInteractionTest {
 	/**
-	 * A transition from one state to another using a given method. The methods
-	 * and start sequences are strings and the function with these names will be
-	 * executed using reflection.
+	 * A transition from one state to another using a given method. The methods and start sequences
+	 * are strings and the function with these names will be executed using reflection.
 	 */
 	private static class Transition {
 		private PacmanInteraction.MatchState state;
@@ -77,8 +76,7 @@ public class PacmanInteractionTest {
 	 * Testing Event with THeory.
 	 * 
 	 * @param transition
-	 *            The transition with a begin/end state and list of methods to
-	 *            execute
+	 *            The transition with a begin/end state and list of methods to execute
 	 * @throws IllegalAccessException
 	 *             Required for using reflexion
 	 * @throws FactoryException
@@ -147,8 +145,8 @@ public class PacmanInteractionTest {
 	 * @param transition
 	 *            The transition to test
 	 * @param method
-	 *            The method to execute for this transition (since the
-	 *            Transition class contains multiple methods)
+	 *            The method to execute for this transition (since the Transition class contains
+	 *            multiple methods)
 	 * @throws FactoryException
 	 * @throws IllegalAccessException
 	 * @throws NoSuchMethodException
@@ -163,8 +161,7 @@ public class PacmanInteractionTest {
 		PacmanInteraction pi = getPacmanInteraction(transition.board);
 
 		/*
-		 * Run a predefined sequence of methods to get to the wanted startup
-		 * state
+		 * Run a predefined sequence of methods to get to the wanted startup state
 		 */
 		for (String sequenceMethod : transition.startSequence) {
 			PacmanInteraction.class.getDeclaredMethod(sequenceMethod)
@@ -181,8 +178,7 @@ public class PacmanInteractionTest {
 	}
 
 	/**
-	 * Use reflection to get the field with the name fieldName from the
-	 * instance.
+	 * Use reflection to get the field with the name fieldName from the instance.
 	 * 
 	 * @param instance
 	 * @param fieldName
