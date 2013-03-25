@@ -41,8 +41,7 @@ public class MapParserTest {
 	private Food nom;
 
 	/**
-	 * Here I initialize the map on which I want to test the nice weather
-	 * behavior.
+	 * Here I initialize the map on which I want to test the nice weather behavior.
 	 */
 	private String[] map = { "PG.# " };
 	private int width = map[0].length();
@@ -50,9 +49,8 @@ public class MapParserTest {
 	private Board board;
 
 	/**
-	 * @Before Everything is initialized here, and all the things our mocked
-	 *         Factory should are redirected to return the Objects we made
-	 *         ourselves.
+	 * @Before Everything is initialized here, and all the things our mocked Factory should are
+	 *         redirected to return the Objects we made ourselves.
 	 */
 	@Before
 	public void setup() {
@@ -91,9 +89,8 @@ public class MapParserTest {
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'PLAYER' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'PLAYER' sprite.
 	 * @throws FactoryException
 	 *             if input was in wrong format.
 	 */
@@ -107,9 +104,8 @@ public class MapParserTest {
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'GHOST' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'GHOST' sprite.
 	 * @throws FactoryException
 	 *             if input was in wrong format.
 	 */
@@ -122,9 +118,8 @@ public class MapParserTest {
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'FOOD' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'FOOD' sprite.
 	 * @throws FactoryException
 	 *             if input was in wrong format.
 	 */
@@ -137,9 +132,8 @@ public class MapParserTest {
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'WALL' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'WALL' sprite.
 	 * @throws FactoryException
 	 *             if input was in wrong format.
 	 */
@@ -152,9 +146,9 @@ public class MapParserTest {
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test if a
-	 *       tile truly stays empty when we try to add ' ', a.k.a. nothing.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test if a tile truly stays empty when we try to add
+	 *       ' ', a.k.a. nothing.
 	 * @throws FactoryException
 	 *             if input was in wrong format.
 	 */
@@ -168,8 +162,8 @@ public class MapParserTest {
 	// Now following: the bad weather behavior tests!
 
 	/**
-	 * @Test Test whether the Parser throws the right exception when we try to
-	 *       initialize an empty map.
+	 * @Test Test whether the Parser throws the right exception when we try to initialize an empty
+	 *       map.
 	 * @throws FactoryException
 	 *             if input was in wrong format.
 	 */
@@ -180,8 +174,8 @@ public class MapParserTest {
 	}
 
 	/**
-	 * @Test Test whether the Parser throws the right exception when we try to
-	 *       initialize a map with an illegal spriteCode (in this case, 'S').
+	 * @Test Test whether the Parser throws the right exception when we try to initialize a map with
+	 *       an illegal spriteCode (in this case, 'S').
 	 * @throws FactoryException
 	 *             if input was in wrong format.
 	 */
