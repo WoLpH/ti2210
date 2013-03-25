@@ -22,8 +22,8 @@ public class BoardInvalidMovesTest {
 	private final Board board;
 
 	/**
-	 * Create a new test case obtaining the tile from starting point (x, y) on a
-	 * board with the given width and height.
+	 * Create a new test case obtaining the tile from starting point (x, y) on a board with the
+	 * given width and height.
 	 * 
 	 * @param direction
 	 *            Direction to move in
@@ -34,8 +34,8 @@ public class BoardInvalidMovesTest {
 	}
 
 	/**
-	 * The actual test case, we expect failure since we make a board that
-	 * doesn't contain the position.
+	 * The actual test case, we expect failure since we make a board that doesn't contain the
+	 * position.
 	 */
 	@Test
 	public void testTileAtDirection() {
