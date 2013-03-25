@@ -11,4 +11,8 @@ target/
 .pmd
 *.pdf
 
-/bin
+# Other stuff which is in the repo
+bin
+reports
+jpacman
+
