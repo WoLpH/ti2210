@@ -90,19 +90,4 @@ public class UndoButtonPanel extends ButtonPanel {
 		// TODO Implement the actual undo
 		assert invariant();
 	}
-
-	/**
-	 * Set the listener capable of exercising the requested events.
-	 * 
-	 * @param pi
-	 *            The new pacman interactor
-	 * @return Itself for fluency.
-	 */
-	@Override
-	public ButtonPanel withInteractor(PacmanInteraction pi) {
-		this.pacmanInteractor = pi;
-		pi.addObserver(this);
-		return this;
-	}
-
 }
