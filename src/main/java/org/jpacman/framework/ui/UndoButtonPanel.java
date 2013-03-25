@@ -27,6 +27,7 @@ public class UndoButtonPanel extends ButtonPanel {
 	 */
 	protected JButton createRedoButton() {
 		JButton redoButton = new JButton("Redo");
+		redoButton.setEnabled(false);
 		redoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
