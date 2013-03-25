@@ -23,34 +23,17 @@ public class UndoButtonPanel extends ButtonPanel {
 	private static final long serialVersionUID = 2798148329579893037L;
 
 	/**
-	 * Set the listener capable of exercising the requested events.
-	 * 
-	 * @param pi
-	 *            The new pacman interactor
-	 * @return Itself for fluency.
+	 * @return A new button to redo the game.
 	 */
-	public ButtonPanel withInteractor(PacmanInteraction pi) {
-		pacmanInteractor = pi;
-		pi.addObserver(this);
-		return this;
-	}
-
-	/**
-	 * Obtain the handler capable of dealing with button events.
-	 * 
-	 * @return The pacman interactor.
-	 */
-	public IPacmanInteraction getPacmanInteractor() {
-		return pacmanInteractor;
-	}
-
-	@Override
-	public void initialize() {
-		undoButton = createUndoButton();
-		redoButton = createRedoButton();
-		addButton(undoButton);
-		super.initialize();
-		addButton(redoButton);
+	protected JButton createRedoButton() {
+		JButton redoButton = new JButton("Redo");
+		redoButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO: implement the redo method
+			}
+		});
+		return redoButton;
 	}
 
 	/**
@@ -67,19 +50,37 @@ public class UndoButtonPanel extends ButtonPanel {
 		return undoButton;
 	}
 
-	
 	/**
-	 * @return A new button to redo the game.
+	 * Obtain the handler capable of dealing with button events.
+	 * 
+	 * @return The pacman interactor.
 	 */
-	protected JButton createRedoButton() {
-		JButton redoButton = new JButton("Redo");
-		redoButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO: implement the redo method
-			}
-		});
-		return redoButton;
+	@Override
+	public IPacmanInteraction getPacmanInteractor() {
+		return this.pacmanInteractor;
+	}
+
+	@Override
+	public void initialize() {
+		this.undoButton = createUndoButton();
+		this.redoButton = createRedoButton();
+		addButton(this.undoButton);
+		super.initialize();
+		addButton(this.redoButton);
+	}
+
+	/**
+	 * Set the listener capable of exercising the requested events.
+	 * 
+	 * @param pi
+	 *            The new pacman interactor
+	 * @return Itself for fluency.
+	 */
+	@Override
+	public ButtonPanel withInteractor(PacmanInteraction pi) {
+		this.pacmanInteractor = pi;
+		pi.addObserver(this);
+		return this;
 	}
 
 }
