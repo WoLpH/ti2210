@@ -11,13 +11,6 @@ import org.jpacman.framework.factory.UndoableGameFactory;
  * 
  */
 public class UndoableGameTest extends GameTest {
-
-	/**
-	 * 
-	 */
-	public UndoableGameTest() {
-	}
-
 	@Override
 	public IGameFactory makeFactory() {
 		return new UndoableGameFactory();
