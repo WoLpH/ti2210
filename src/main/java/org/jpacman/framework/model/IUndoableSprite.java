@@ -5,4 +5,9 @@ package org.jpacman.framework.model;
  * 
  */
 interface IUndoableSprite {
+	/**
+	 * @return A tile with the same X and Y coordinates as the tile this sprite occupies.
+	 */
+	UndoableTile cloneTile();
+
 }
