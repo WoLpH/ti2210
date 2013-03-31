@@ -20,4 +20,15 @@ public class UndoableFood extends Food implements IUndoableSprite {
 		return this.mixin.cloneTile();
 	}
 
+	@Override
+	public void moveTo(UndoableGame game, Tile tile) {
+		if (getTile() == null && tile != null) {
+			game.getPointManager().consumePointsOnBoard(game.getPlayer(),
+					-Food.DEFAULT_POINTS);
+		} else if (getTile() != null && tile == null) {
+			game.getPointManager().consumePointsOnBoard(game.getPlayer(),
+					Food.DEFAULT_POINTS);
+		}
+		this.mixin.moveTo(game, tile);
+	}
 }
