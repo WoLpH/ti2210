@@ -12,4 +12,6 @@ import org.jpacman.framework.model.IBoardInspector.SpriteType;
  * 
  */
 class GameState {
+	private final HashMap<SpriteType, ArrayList<UndoableTile>> tiles;
+
 }
