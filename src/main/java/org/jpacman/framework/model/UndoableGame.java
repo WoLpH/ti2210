@@ -37,4 +37,10 @@ public class UndoableGame extends Game {
 		return (UndoableBoard) super.getBoard();
 	}
 
+
+	private int saveState(GameState gameState) {
+		this.states.add(gameState);
+		return this.states.size();
+	}
+
 }
