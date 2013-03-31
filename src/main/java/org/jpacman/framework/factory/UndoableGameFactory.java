@@ -54,4 +54,13 @@ public class UndoableGameFactory extends DefaultGameFactory {
 		this.undoableGame = new UndoableGame();
 		return this.undoableGame;
 	}
+
+	@Override
+	public Ghost makeGhost() {
+		assert getGame() != null;
+		UndoableGhost ghost = new UndoableGhost();
+		getGame().addGhost(ghost);
+		return ghost;
+	}
+
 }
