@@ -28,4 +28,9 @@ class UndoableTile extends Tile {
 			return false;
 		}
 	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }
