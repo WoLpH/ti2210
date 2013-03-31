@@ -52,6 +52,11 @@ public class UndoButtonPanel extends ButtonPanel {
 	}
 
 	@Override
+	public UndoablePacmanInteraction getPacmanInteractor() {
+		return (UndoablePacmanInteraction) super.getPacmanInteractor();
+	}
+
+	@Override
 	public void initialize() {
 		this.undoButton = createUndoButton();
 		this.redoButton = createRedoButton();
