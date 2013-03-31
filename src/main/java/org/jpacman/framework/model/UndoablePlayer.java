@@ -21,4 +21,13 @@ public class UndoablePlayer extends Player implements IUndoableSprite {
 		return this.mixin.cloneTile();
 	}
 
+	@Override
+	public void moveTo(UndoableGame game, Tile tile) {
+		if (tile == null) {
+			game.getPlayer().die();
+		} else {
+			game.getPlayer().resurrect();
+		}
+		this.mixin.moveTo(game, tile);
+	}
 }
