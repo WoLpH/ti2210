@@ -68,10 +68,9 @@ public class UndoButtonPanel extends ButtonPanel {
 	/**
 	 * Redo the last undo'ed move.
 	 */
-	public void redo() {
+	private void redo() {
 		assert invariant();
-		pause();
-		// TODO Implement the actual redo
+		getPacmanInteractor().redo();
 		assert invariant();
 	}
 
