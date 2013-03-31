@@ -59,7 +59,7 @@ public class UndoableGameFactory extends DefaultGameFactory {
 
 	@Override
 	public Game makeGame() {
-		this.undoableGame = new UndoableGame();
+		this.undoableGame = new UndoableGame(this.undoablePacman);
 		return this.undoableGame;
 	}
 
