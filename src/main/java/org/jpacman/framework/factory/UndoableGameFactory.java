@@ -42,6 +42,14 @@ public class UndoableGameFactory extends DefaultGameFactory {
 
 
 	@Override
+	public Board makeBoard(int w, int h) {
+		assert getGame() != null;
+		Board b = new UndoableBoard(w, h);
+		getGame().setBoard(b);
+		return b;
+	}
+
+	@Override
 	public UndoableFood makeFood() {
 		assert getGame() != null;
 		UndoableFood food = new UndoableFood();
