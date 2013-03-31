@@ -5,4 +5,13 @@ package org.jpacman.framework.model;
  * 
  */
 public class UndoableWall extends Wall implements IUndoableSprite {
+
+	/**
+	 * Create undoable wall.
+	 */
+	public UndoableWall() {
+		super();
+		this.mixin = new UndoableSpriteMixin(this);
+	}
+
 }
