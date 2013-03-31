@@ -79,6 +79,14 @@ public class UndoableGame extends Game {
 		}
 	}
 
+	/**
+	 * Redo the last undoed move.
+	 */
+	public void redo() {
+		if (canRedo()) {
+			loadState(this.states.get(++this.stateIndex));
+		}
+	}
 
 	private int saveState(GameState gameState) {
 		this.states.add(gameState);
