@@ -11,6 +11,7 @@ import java.util.HashMap;
  * 
  */
 public class UndoableBoard extends Board {
+	private final HashMap<SpriteType, ArrayList<IUndoableSprite>> sprites;
 
 	/**
 	 * Create a new board.
