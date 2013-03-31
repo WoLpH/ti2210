@@ -5,4 +5,13 @@ package org.jpacman.framework.model;
  * 
  */
 public class UndoablePlayer extends Player implements IUndoableSprite {
+
+	/**
+	 * Create a new undoable player.
+	 */
+	public UndoablePlayer() {
+		super();
+		this.mixin = new UndoableSpriteMixin(this);
+	}
+
 }
