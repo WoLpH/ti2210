@@ -24,7 +24,7 @@ public class UndoButtonPanel extends ButtonPanel {
 	/**
 	 * @return A new button to redo the game.
 	 */
-	protected JButton createRedoButton() {
+	private JButton createRedoButton() {
 		JButton redoButton = new JButton("Redo");
 		redoButton.setEnabled(false);
 		redoButton.addActionListener(new ActionListener() {
