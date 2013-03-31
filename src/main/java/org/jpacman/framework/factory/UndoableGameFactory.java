@@ -64,6 +64,14 @@ public class UndoableGameFactory extends DefaultGameFactory {
 	}
 
 	@Override
+	public Player makePlayer() {
+		assert getGame() != null;
+		UndoablePlayer player = new UndoablePlayer();
+		getGame().addPlayer(player);
+		return player;
+	}
+
+	@Override
 	public Wall makeWall() {
 		assert getGame() != null;
 		UndoableWall wall = new UndoableWall();
