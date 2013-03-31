@@ -75,6 +75,16 @@ public class UndoButtonPanel extends ButtonPanel {
 	}
 
 	/**
+
+	/**
+	 * @param enable
+	 *            Whether to enable the undo button
+	 */
+	public void toggleUndo(boolean enable) {
+		this.undoButton.setEnabled(enable);
+	}
+
+	/**
 	 * Undo the last move.
 	 */
 	private void undo() {
