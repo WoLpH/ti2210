@@ -48,4 +48,16 @@ public class UndoableBoard extends Board {
 		}
 	}
 
+	/**
+	 * @param next
+	 *            The tile with the coordinates to find
+	 * @return The tile with the same coordinates as the given tile.
+	 */
+	Tile tileAt(UndoableTile next) {
+		if (next == null) {
+			return null;
+		} else {
+			return tileAt(next.getX(), next.getY());
+		}
+	}
 }
