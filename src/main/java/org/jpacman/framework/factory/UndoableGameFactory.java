@@ -40,6 +40,15 @@ public class UndoableGameFactory extends DefaultGameFactory {
 		return this.undoableGame;
 	}
 
+
+	@Override
+	public UndoableFood makeFood() {
+		assert getGame() != null;
+		UndoableFood food = new UndoableFood();
+		getGame().addFood(food);
+		return food;
+	}
+
 	@Override
 	public Game makeGame() {
 		this.undoableGame = new UndoableGame();
