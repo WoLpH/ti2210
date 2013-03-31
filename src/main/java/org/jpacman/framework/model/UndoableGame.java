@@ -19,4 +19,16 @@ public class UndoableGame extends Game {
 	private int stateIndex;
 	private final UndoablePacman undoablePacman;
 
+	/**
+	 * Initialize the states history for the games.
+	 * 
+	 * @param undoablePacman
+	 *            The undoable pacman to implement undo/redo.
+	 */
+	public UndoableGame(UndoablePacman undoablePacman) {
+		this.states = new ArrayList<GameState>();
+		this.undoablePacman = undoablePacman;
+		this.stateIndex = 0;
+	}
+
 }
