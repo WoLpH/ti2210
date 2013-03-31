@@ -17,5 +17,6 @@ public class UndoableGame extends Game {
 	 */
 	private ArrayList<GameState> states;
 	private int stateIndex;
+	private final UndoablePacman undoablePacman;
 
 }
