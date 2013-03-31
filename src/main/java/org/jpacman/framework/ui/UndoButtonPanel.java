@@ -77,10 +77,9 @@ public class UndoButtonPanel extends ButtonPanel {
 	/**
 	 * Undo the last move.
 	 */
-	public void undo() {
+	private void undo() {
 		assert invariant();
-		pause();
-		// TODO Implement the actual undo
+		getPacmanInteractor().undo();
 		assert invariant();
 	}
 }
