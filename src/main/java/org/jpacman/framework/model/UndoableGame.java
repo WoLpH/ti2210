@@ -31,6 +31,12 @@ public class UndoableGame extends Game {
 		this.stateIndex = 0;
 	}
 
+	/**
+	 * @return Whether there is a state to undo.
+	 */
+	private boolean canUndo() {
+		return this.stateIndex > 0;
+	}
 
 	@Override
 	public UndoableBoard getBoard() {
