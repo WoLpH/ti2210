@@ -29,4 +29,10 @@ public class UndoableBoard extends Board {
 		}
 	}
 
+	/**
+	 * @return All sprites in this board.
+	 */
+	public HashMap<SpriteType, ArrayList<IUndoableSprite>> getSprites() {
+		return this.sprites;
+	}
 }
