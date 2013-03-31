@@ -4,6 +4,7 @@
 package org.jpacman.framework.ui;
 
 import org.jpacman.framework.factory.FactoryException;
+import org.jpacman.framework.factory.UndoableGameFactory;
 
 /**
  * @author Rick van Hattem <Rick.van.Hattem@Fawo.nl>
@@ -30,6 +31,7 @@ public class UndoablePacman extends MainUI {
 
 	@Override
 	public MainUI initialize() throws FactoryException {
+		withFactory(new UndoableGameFactory());
 		withButtonPanel(new UndoButtonPanel());
 		return super.initialize();
 	}
