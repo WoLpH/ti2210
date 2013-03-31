@@ -35,4 +35,17 @@ public class UndoableBoard extends Board {
 	public HashMap<SpriteType, ArrayList<IUndoableSprite>> getSprites() {
 		return this.sprites;
 	}
+
+	@Override
+	public void put(Sprite s, int x, int y) {
+		super.put(s, x, y);
+		if (s instanceof IUndoableSprite) {
+			this.sprites.get(s.getSpriteType()).add((IUndoableSprite) s);
+		} else {
+			throw new RuntimeException(
+					"Was expecting an IUndoableSprite instance, got "
+							+ s.getClass());
+		}
+	}
+
 }
