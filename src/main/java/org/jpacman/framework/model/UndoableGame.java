@@ -31,4 +31,10 @@ public class UndoableGame extends Game {
 		this.stateIndex = 0;
 	}
 
+
+	@Override
+	public UndoableBoard getBoard() {
+		return (UndoableBoard) super.getBoard();
+	}
+
 }
