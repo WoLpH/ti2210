@@ -30,24 +30,19 @@ public class UndoablePacman extends MainUI {
 		new UndoablePacman().main();
 	}
 
+	/**
+	 * @return The current button panel
+	 */
+	public UndoButtonPanel getButtonPanel() {
+		return this.buttonPanel;
+	}
+
 	@Override
 	public MainUI initialize() throws FactoryException {
-		withFactory(new UndoableGameFactory());
-		withButtonPanel(new UndoButtonPanel());
+		withFactory(new UndoableGameFactory(this));
+		this.buttonPanel = new UndoButtonPanel();
+		withButtonPanel(getButtonPanel());
+		withModelInteractor(new UndoablePacmanInteraction());
 		return super.initialize();
-	}
-
-	/**
-	 * Redo the last move.
-	 */
-	void redo() {
-
-	}
-
-	/**
-	 * Undo the last move.
-	 */
-	void undo() {
-
 	}
 }
