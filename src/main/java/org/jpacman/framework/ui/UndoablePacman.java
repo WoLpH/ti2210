@@ -11,6 +11,7 @@ import org.jpacman.framework.factory.UndoableGameFactory;
  * 
  */
 public class UndoablePacman extends MainUI {
+	private UndoButtonPanel buttonPanel;
 
 	/**
 	 * 
