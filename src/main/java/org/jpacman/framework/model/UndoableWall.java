@@ -20,4 +20,9 @@ public class UndoableWall extends Wall implements IUndoableSprite {
 		return this.mixin.cloneTile();
 	}
 
+	@Override
+	public void moveTo(UndoableGame game, Tile tile) {
+		this.mixin.moveTo(game, tile);
+	}
+
 }
