@@ -13,6 +13,12 @@ public class UndoableGameFactory extends DefaultGameFactory {
 	private UndoableGame undoableGame;
 
 	@Override
+	protected Game getGame() {
+		assert this.undoableGame != null;
+		return this.undoableGame;
+	}
+
+	@Override
 	public Game makeGame() {
 		this.undoableGame = new UndoableGame();
 		return this.undoableGame;
