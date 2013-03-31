@@ -18,7 +18,7 @@ public class UndoablePacman extends MainUI {
 	private static final long serialVersionUID = -1938866969221252775L;
 
 	/**
-	 * Main tarting point of the undoable pacman game.
+	 * Main starting point of the undoable pacman game.
 	 * 
 	 * @param args
 	 *            Ignored
