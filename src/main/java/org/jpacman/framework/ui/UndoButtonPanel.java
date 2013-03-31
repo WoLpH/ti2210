@@ -75,6 +75,12 @@ public class UndoButtonPanel extends ButtonPanel {
 	}
 
 	/**
+	 * @param enable
+	 *            Whether to enable the redo button
+	 */
+	public void toggleRedo(boolean enable) {
+		this.redoButton.setEnabled(enable);
+	}
 
 	/**
 	 * @param enable
