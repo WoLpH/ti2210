@@ -10,4 +10,11 @@ interface IUndoableSprite {
 	 */
 	UndoableTile cloneTile();
 
+	/**
+	 * @param game
+	 *            The game to apply any needed changes to.
+	 * @param tile
+	 *            The tile to move to.
+	 */
+	void moveTo(UndoableGame game, Tile tile);
 }
