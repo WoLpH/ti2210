@@ -25,4 +25,18 @@ class UndoableSpriteMixin extends Sprite implements IUndoableSprite {
 		}
 	}
 
+	@Override
+	public void moveTo(UndoableGame game, Tile newTile) {
+		Tile oldTile = this.sprite.getTile();
+		if ((oldTile == null && newTile != null)
+				|| (oldTile != null && newTile == null) || (oldTile != null)
+				&& !oldTile.equals(newTile)) {
+			if (this.sprite.getTile() != null) {
+				this.sprite.deoccupy();
+			}
+			if (newTile != null) {
+				this.sprite.occupy(newTile);
+			}
+		}
+	}
 }
