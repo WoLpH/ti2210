@@ -33,4 +33,22 @@ class GameState {
 		}
 	}
 
+	/**
+	 * @param game
+	 *            Apply this state to the given game
+	 */
+	void restoreTo(UndoableGame game) {
+		UndoableBoard board = game.getBoard();
+		for (Entry<SpriteType, ArrayList<UndoableTile>> entry : this.tiles
+				.entrySet()) {
+			SpriteType spriteType = entry.getKey();
+			ArrayList<IUndoableSprite> sprites = board.getSprites().get(
+					spriteType);
+			Iterator<UndoableTile> tiles = entry.getValue().iterator();
+
+			for (IUndoableSprite sprite : sprites) {
+				sprite.moveTo(game, board.tileAt(tiles.next()));
+			}
+		}
+	}
 }
