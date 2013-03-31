@@ -63,4 +63,10 @@ public class UndoableGameFactory extends DefaultGameFactory {
 		return ghost;
 	}
 
+	@Override
+	public Wall makeWall() {
+		assert getGame() != null;
+		UndoableWall wall = new UndoableWall();
+		return wall;
+	}
 }
