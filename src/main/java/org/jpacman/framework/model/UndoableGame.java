@@ -38,6 +38,35 @@ public class UndoableGame extends Game {
 	}
 
 
+	@Override
+	public void movePlayer(Direction dir) {
+		Player player = getPlayer();
+		Tile currentTile = player.getTile();
+
+		GameState gameState = new GameState(getBoard());
+		super.movePlayer(dir);
+
+		/* If we moved the player, we want to add an undo state */
+		if (currentTile != player.getTile()) {
+			/*
+			 * Remove all states after this state, redoing should only be possible if we haven't
+			 * moved since the last undo
+			 */
+			this.states = new ArrayList<GameState>(this.states.subList(0,
+					this.stateIndex));
+
+			/* Save the state to restore later */
+			this.stateIndex = saveState(gameState);
+		}
+
+		UndoButtonPanel buttonPanel = this.undoablePacman.getButtonPanel();
+		if (buttonPanel != null) {
+			buttonPanel.toggleUndo(canUndo());
+			buttonPanel.toggleRedo(canRedo());
+		}
+	}
+
+
 	private int saveState(GameState gameState) {
 		this.states.add(gameState);
 		return this.states.size();
