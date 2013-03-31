@@ -73,8 +73,10 @@ public class UndoButtonPanel extends ButtonPanel {
 	 * Redo the last undo'ed move.
 	 */
 	public void redo() {
-		// TODO Auto-generated method stub
-
+		assert invariant();
+		pause();
+		// TODO Implement the actual redo
+		assert invariant();
 	}
 
 	/**
