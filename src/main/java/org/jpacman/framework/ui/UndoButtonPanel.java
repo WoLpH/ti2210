@@ -30,7 +30,7 @@ public class UndoButtonPanel extends ButtonPanel {
 		redoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO: implement the redo method
+				redo();
 			}
 		});
 		return redoButton;
@@ -44,7 +44,7 @@ public class UndoButtonPanel extends ButtonPanel {
 		undoButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO: implement the undo method
+				undo();
 			}
 		});
 		return undoButton;
