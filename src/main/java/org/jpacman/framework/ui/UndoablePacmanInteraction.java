@@ -7,6 +7,15 @@ import org.jpacman.framework.model.UndoableGame;
  * 
  */
 class UndoablePacmanInteraction extends PacmanInteraction {
+	/**
+	 * Redo the last undoed move.
+	 */
+	void redo() {
+		updateState();
+		UndoableGame game = (UndoableGame) getGame();
+		game.redo();
+		updateState();
+	}
 
 	/**
 	 * Undo the last move.
