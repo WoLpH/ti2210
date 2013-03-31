@@ -15,7 +15,6 @@ import javax.swing.JButton;
 public class UndoButtonPanel extends ButtonPanel {
 	private JButton undoButton;
 	private JButton redoButton;
-	private PacmanInteraction pacmanInteractor;
 
 	/**
 	 * 
@@ -50,16 +49,6 @@ public class UndoButtonPanel extends ButtonPanel {
 			}
 		});
 		return undoButton;
-	}
-
-	/**
-	 * Obtain the handler capable of dealing with button events.
-	 * 
-	 * @return The pacman interactor.
-	 */
-	@Override
-	public IPacmanInteraction getPacmanInteractor() {
-		return this.pacmanInteractor;
 	}
 
 	@Override
