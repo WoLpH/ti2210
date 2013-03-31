@@ -93,4 +93,15 @@ public class UndoableGame extends Game {
 		return this.states.size();
 	}
 
+	/**
+	 * Undo the last move.
+	 */
+	public void undo() {
+		if (canUndo()) {
+			if (this.stateIndex == this.states.size()) {
+				saveState(new GameState(getBoard()));
+			}
+			loadState(this.states.get(--this.stateIndex));
+		}
+	}
 }
