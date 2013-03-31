@@ -5,6 +5,7 @@ package org.jpacman.framework.model;
  * 
  */
 class UndoableSpriteMixin extends Sprite implements IUndoableSprite {
+	private final Sprite sprite;
 
 	/**
 	 * @param sprite
@@ -12,6 +13,16 @@ class UndoableSpriteMixin extends Sprite implements IUndoableSprite {
 	 */
 	UndoableSpriteMixin(Sprite sprite) {
 		this.sprite = sprite;
+	}
+
+	@Override
+	public UndoableTile cloneTile() {
+		Tile tile = this.sprite.getTile();
+		if (tile != null) {
+			return new UndoableTile(tile);
+		} else {
+			return null;
+		}
 	}
 
 }
