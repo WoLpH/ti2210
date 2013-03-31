@@ -40,6 +40,12 @@ public class UndoableGameFactory extends DefaultGameFactory {
 		return this.undoableGame;
 	}
 
+	/**
+	 * @return the undoablePacman
+	 */
+	public UndoablePacman getUndoablePacman() {
+		return this.undoablePacman;
+	}
 
 	@Override
 	public Board makeBoard(int w, int h) {
