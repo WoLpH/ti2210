@@ -50,6 +50,13 @@ public class UndoableGame extends Game {
 		return (UndoableBoard) super.getBoard();
 	}
 
+	private void loadState(GameState state) {
+		this.undoablePacman.eventHandler().stop();
+		state.restoreTo(this);
+		this.undoablePacman.getButtonPanel().toggleUndo(canUndo());
+		this.undoablePacman.getButtonPanel().toggleRedo(canRedo());
+		notifyViewers();
+	}
 
 	@Override
 	public void movePlayer(Direction dir) {
