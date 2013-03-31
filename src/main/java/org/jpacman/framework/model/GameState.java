@@ -14,4 +14,23 @@ import org.jpacman.framework.model.IBoardInspector.SpriteType;
 class GameState {
 	private final HashMap<SpriteType, ArrayList<UndoableTile>> tiles;
 
+	/**
+	 * Construct GameState from Board.
+	 * 
+	 * @param board
+	 *            THe board that has to be cloned
+	 */
+	GameState(UndoableBoard board) {
+		this.tiles = new HashMap<IBoardInspector.SpriteType, ArrayList<UndoableTile>>();
+
+		for (SpriteType spriteType : SpriteType.values()) {
+			ArrayList<IUndoableSprite> sprites = board.getSprites().get(
+					spriteType);
+			this.tiles.put(spriteType, new ArrayList<UndoableTile>());
+			for (IUndoableSprite sprite : sprites) {
+				this.tiles.get(spriteType).add(sprite.cloneTile());
+			}
+		}
+	}
+
 }
