@@ -11,6 +11,7 @@ import org.jpacman.framework.factory.UndoableGameFactory;
  * 
  */
 public class UndoablePacman extends MainUI {
+	private UndoButtonPanel buttonPanel;
 
 	/**
 	 * 
@@ -18,7 +19,7 @@ public class UndoablePacman extends MainUI {
 	private static final long serialVersionUID = -1938866969221252775L;
 
 	/**
-	 * Main tarting point of the undoable pacman game.
+	 * Main starting point of the undoable pacman game.
 	 * 
 	 * @param args
 	 *            Ignored
@@ -29,24 +30,19 @@ public class UndoablePacman extends MainUI {
 		new UndoablePacman().main();
 	}
 
+	/**
+	 * @return The current button panel
+	 */
+	public UndoButtonPanel getButtonPanel() {
+		return this.buttonPanel;
+	}
+
 	@Override
 	public MainUI initialize() throws FactoryException {
-		withFactory(new UndoableGameFactory());
-		withButtonPanel(new UndoButtonPanel());
+		withFactory(new UndoableGameFactory(this));
+		this.buttonPanel = new UndoButtonPanel();
+		withButtonPanel(getButtonPanel());
+		withModelInteractor(new UndoablePacmanInteraction());
 		return super.initialize();
-	}
-
-	/**
-	 * Redo the last move.
-	 */
-	void redo() {
-
-	}
-
-	/**
-	 * Undo the last move.
-	 */
-	void undo() {
-
 	}
 }
