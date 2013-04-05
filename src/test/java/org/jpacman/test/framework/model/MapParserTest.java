@@ -81,7 +81,9 @@ public class MapParserTest {
 
 	/**
 	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly.
+	 *       whether every sprite type gets added correctly. Here we test for
+	 *       the 'PLAYER' sprite.
+	 * @throws FactoryException
 	 */
 	@Test
 	public void testAddPlayer() throws FactoryException {
@@ -91,6 +93,12 @@ public class MapParserTest {
 				.topSprite().getSpriteType());
 	}
 
+	/**
+	 * @Test Here we'll test whether the map parses nicely, one for one testing
+	 *       whether every sprite type gets added correctly. Here we test for
+	 *       the 'GHOST' sprite.
+	 * @throws FactoryException
+	 */
 	@Test
 	public void testAddGhost() throws FactoryException {
 		Game test = mp.parseMap(map);
@@ -99,6 +107,12 @@ public class MapParserTest {
 				.getSpriteType());
 	}
 
+	/**
+	 * @Test Here we'll test whether the map parses nicely, one for one testing
+	 *       whether every sprite type gets added correctly. Here we test for
+	 *       the 'FOOD' sprite.
+	 * @throws FactoryException
+	 */
 	@Test
 	public void testAddFood() throws FactoryException {
 		Game test = mp.parseMap(map);
@@ -107,6 +121,12 @@ public class MapParserTest {
 				.getSpriteType());
 	}
 
+	/**
+	 * @Test Here we'll test whether the map parses nicely, one for one testing
+	 *       whether every sprite type gets added correctly. Here we test for
+	 *       the 'WALL' sprite.
+	 * @throws FactoryException
+	 */
 	@Test
 	public void testAddWall() throws FactoryException {
 		Game test = mp.parseMap(map);
@@ -115,6 +135,12 @@ public class MapParserTest {
 				.getSpriteType());
 	}
 
+	/**
+	 * @Test Here we'll test whether the map parses nicely, one for one testing
+	 *       whether every sprite type gets added correctly. Here we test if a
+	 *       tile truly stays empty when we try to add ' ', a.k.a. nothing.
+	 * @throws FactoryException
+	 */
 	@Test
 	public void testAddEmpty() throws FactoryException {
 		Game test = mp.parseMap(map);
@@ -127,6 +153,7 @@ public class MapParserTest {
 	/**
 	 * @Test Test whether the Parser throws the right exception when we try to
 	 *       initialize an empty map.
+	 * @throws FactoryException
 	 */
 	@Test(expected = FactoryException.class)
 	public void badMapTest() throws FactoryException {
@@ -134,6 +161,11 @@ public class MapParserTest {
 		mp.parseMap(badMap);
 	}
 
+	/**
+	 * @Test Test whether the Parser throws the right exception when we try to
+	 *       initialize a map with an illegal spriteCode (in this case, 'S').
+	 * @throws FactoryException
+	 */
 	@Test(expected = FactoryException.class)
 	public void badCharTest() throws FactoryException {
 		String[] badMap = { "S" };
