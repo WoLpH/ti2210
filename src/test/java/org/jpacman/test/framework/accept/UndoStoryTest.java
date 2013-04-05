@@ -1,5 +1,6 @@
 package org.jpacman.test.framework.accept;
 
+import org.jpacman.framework.model.Food;
 import org.jpacman.framework.model.IBoardInspector;
 import org.jpacman.framework.ui.PacmanInteraction;
 import org.jpacman.framework.ui.UndoablePacman;
@@ -41,8 +42,10 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 		getEngine().start();
 
 		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
+		Assert.assertEquals(PacmanInteraction.MatchState.PLAYING, getEngine()
+				.getCurrentState());
 
-		getUI().getGame().undo();
+		undo();
 
 		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
 		Assert.assertEquals(PacmanInteraction.MatchState.PLAYING, getEngine()
@@ -59,7 +62,7 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	public void test_S3_2_UndoMove() {
 		test_S2_1_PlayerEmpty();
 		Assert.assertEquals(getEmptyTile(), getPlayer().getTile());
-		getUI().getGame().undo();
+		undo();
 		Assert.assertEquals(null, getEmptyTile().topSprite());
 		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
 	}
@@ -73,11 +76,15 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	@Test
 	public void test_S3_3_UndoFood() {
 		test_S2_2_PlayerFood();
-		getUI().getGame().undo();
+		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
+		Assert.assertNull(getFoodTile().topSprite());
+		Assert.assertEquals(Food.DEFAULT_POINTS, getPlayer().getPoints());
+
+		undo();
 		Assert.assertEquals(getFoodTile(), getPlayer().getTile());
 		Assert.assertNotEquals(0, getPlayer().getPoints());
 
-		getUI().getGame().undo();
+		undo();
 		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
 		Assert.assertEquals(IBoardInspector.SpriteType.FOOD, getFoodTile()
 				.topSprite().getSpriteType());
@@ -86,15 +93,16 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	}
 
 	/**
-	 * Test that a player is playing again after winning and undoing.
+	 * Test that a player is playing again after losing and undoing.
 	 */
 	@Test
 	public void test_S3_4_UndoLost() {
 		test_S2_4_PlayerDie();
-		getUI().getGame().undo();
-		getEngine().start();
+		Assert.assertEquals(PacmanInteraction.MatchState.LOST, getEngine()
+				.getCurrentState());
 
-		/* Undoing the winning? */
+		/* Undoing the losing? */
+		undo();
 		Assert.assertEquals(PacmanInteraction.MatchState.PLAYING, getEngine()
 				.getCurrentState());
 	}
@@ -105,12 +113,21 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	@Test
 	public void test_S3_5_UndoWon() {
 		test_S2_5_PlayerWin();
-		getUI().getGame().undo();
-		getEngine().start();
+		Assert.assertEquals(PacmanInteraction.MatchState.WON, getEngine()
+				.getCurrentState());
 
 		/* Undoing the winning? */
+		undo();
 		Assert.assertEquals(PacmanInteraction.MatchState.PLAYING, getEngine()
 				.getCurrentState());
+	}
+
+	/**
+	 * Undo the last move.
+	 */
+	protected void undo() {
+		getUI().getGame().undo();
+		getEngine().start();
 	}
 
 }
