@@ -41,10 +41,6 @@ public class UndoableBoard extends Board {
 		super.put(s, x, y);
 		if (s instanceof IUndoableSprite) {
 			this.sprites.get(s.getSpriteType()).add((IUndoableSprite) s);
-		} else {
-			throw new RuntimeException(
-					"Was expecting an IUndoableSprite instance, got "
-							+ s.getClass());
 		}
 	}
 

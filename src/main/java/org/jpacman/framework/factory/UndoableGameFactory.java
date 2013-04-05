@@ -31,20 +31,11 @@ public class UndoableGameFactory extends DefaultGameFactory {
 
 	@Override
 	protected UndoableGame getGame() {
-		assert this.undoableGame != null;
 		return this.undoableGame;
-	}
-
-	/**
-	 * @return the undoablePacman
-	 */
-	public UndoablePacman getUndoablePacman() {
-		return this.undoablePacman;
 	}
 
 	@Override
 	public UndoableBoard makeBoard(int w, int h) {
-		assert getGame() != null;
 		UndoableBoard board = new UndoableBoard(w, h);
 		getGame().setBoard(board);
 		return board;
@@ -52,7 +43,6 @@ public class UndoableGameFactory extends DefaultGameFactory {
 
 	@Override
 	public UndoableFood makeFood() {
-		assert getGame() != null;
 		UndoableFood food = new UndoableFood();
 		getGame().addFood(food);
 		return food;
@@ -66,7 +56,6 @@ public class UndoableGameFactory extends DefaultGameFactory {
 
 	@Override
 	public UndoableGhost makeGhost() {
-		assert getGame() != null;
 		UndoableGhost ghost = new UndoableGhost();
 		getGame().addGhost(ghost);
 		return ghost;
@@ -74,7 +63,6 @@ public class UndoableGameFactory extends DefaultGameFactory {
 
 	@Override
 	public UndoablePlayer makePlayer() {
-		assert getGame() != null;
 		UndoablePlayer player = new UndoablePlayer();
 		getGame().addPlayer(player);
 		return player;
@@ -82,7 +70,6 @@ public class UndoableGameFactory extends DefaultGameFactory {
 
 	@Override
 	public UndoableWall makeWall() {
-		assert getGame() != null;
 		UndoableWall wall = new UndoableWall();
 		return wall;
 	}

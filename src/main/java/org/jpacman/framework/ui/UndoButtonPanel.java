@@ -13,6 +13,30 @@ import javax.swing.JButton;
  * 
  */
 public class UndoButtonPanel extends ButtonPanel {
+	/**
+	 * Action listener for redo button.
+	 * 
+	 * @author Rick van Hattem <Rick.van.Hattem@Fawo.nl>
+	 */
+	private final class RedoActionListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			redo();
+		}
+	}
+
+	/**
+	 * Action listener for undo button.
+	 * 
+	 * @author Rick van Hattem <Rick.van.Hattem@Fawo.nl>
+	 */
+	private final class UndoActionListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			undo();
+		}
+	}
+
 	private JButton undoButton;
 	private JButton redoButton;
 
@@ -27,12 +51,7 @@ public class UndoButtonPanel extends ButtonPanel {
 	private JButton createRedoButton() {
 		JButton redoButton = new JButton("Redo");
 		redoButton.setEnabled(false);
-		redoButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				redo();
-			}
-		});
+		redoButton.addActionListener(new RedoActionListener());
 		return redoButton;
 	}
 
@@ -42,12 +61,7 @@ public class UndoButtonPanel extends ButtonPanel {
 	private JButton createUndoButton() {
 		JButton undoButton = new JButton("Undo");
 		undoButton.setEnabled(false);
-		undoButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				undo();
-			}
-		});
+		undoButton.addActionListener(new UndoActionListener());
 		return undoButton;
 	}
 
@@ -56,22 +70,50 @@ public class UndoButtonPanel extends ButtonPanel {
 		return (UndoablePacmanInteraction) super.getPacmanInteractor();
 	}
 
+	/**
+	 * @return the redoButton
+	 */
+	public JButton getRedoButton() {
+		return this.redoButton;
+	}
+
+	/**
+	 * @return the undoButton
+	 */
+	public JButton getUndoButton() {
+		return this.undoButton;
+	}
+
 	@Override
 	public void initialize() {
-		this.undoButton = createUndoButton();
-		this.redoButton = createRedoButton();
-		addButton(this.undoButton);
+		setUndoButton(createUndoButton());
+		setRedoButton(createRedoButton());
+		addButton(getUndoButton());
 		super.initialize();
-		addButton(this.redoButton);
+		addButton(getRedoButton());
 	}
 
 	/**
 	 * Redo the last undo'ed move.
 	 */
-	private void redo() {
-		assert invariant();
+	public void redo() {
 		getPacmanInteractor().redo();
-		assert invariant();
+	}
+
+	/**
+	 * @param redoButton
+	 *            the redoButton to set
+	 */
+	public void setRedoButton(JButton redoButton) {
+		this.redoButton = redoButton;
+	}
+
+	/**
+	 * @param undoButton
+	 *            the undoButton to set
+	 */
+	public void setUndoButton(JButton undoButton) {
+		this.undoButton = undoButton;
 	}
 
 	/**
@@ -79,7 +121,7 @@ public class UndoButtonPanel extends ButtonPanel {
 	 *            Whether to enable the redo button
 	 */
 	public void toggleRedo(boolean enable) {
-		this.redoButton.setEnabled(enable);
+		getRedoButton().setEnabled(enable);
 	}
 
 	/**
@@ -87,15 +129,13 @@ public class UndoButtonPanel extends ButtonPanel {
 	 *            Whether to enable the undo button
 	 */
 	public void toggleUndo(boolean enable) {
-		this.undoButton.setEnabled(enable);
+		getUndoButton().setEnabled(enable);
 	}
 
 	/**
 	 * Undo the last move.
 	 */
-	private void undo() {
-		assert invariant();
+	public void undo() {
 		getPacmanInteractor().undo();
-		assert invariant();
 	}
 }

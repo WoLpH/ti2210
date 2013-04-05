@@ -5,12 +5,12 @@ package org.jpacman.framework.model;
  * 
  * @author Rick
  */
-class UndoableTile extends Tile {
+public class UndoableTile extends Tile {
 	/**
 	 * @param tile
 	 *            Tile to copy the x and y coordinates from.
 	 */
-	UndoableTile(Tile tile) {
+	public UndoableTile(Tile tile) {
 		super(tile.getX(), tile.getY());
 	}
 
