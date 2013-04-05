@@ -15,7 +15,6 @@ import javax.swing.JButton;
 public class UndoButtonPanel extends ButtonPanel {
 	private JButton undoButton;
 	private JButton redoButton;
-	private PacmanInteraction pacmanInteractor;
 
 	/**
 	 * 
@@ -25,7 +24,7 @@ public class UndoButtonPanel extends ButtonPanel {
 	/**
 	 * @return A new button to redo the game.
 	 */
-	protected JButton createRedoButton() {
+	private JButton createRedoButton() {
 		JButton redoButton = new JButton("Redo");
 		redoButton.setEnabled(false);
 		redoButton.addActionListener(new ActionListener() {
@@ -40,7 +39,7 @@ public class UndoButtonPanel extends ButtonPanel {
 	/**
 	 * @return A new button to undo the game.
 	 */
-	protected JButton createUndoButton() {
+	private JButton createUndoButton() {
 		JButton undoButton = new JButton("Undo");
 		undoButton.setEnabled(false);
 		undoButton.addActionListener(new ActionListener() {
@@ -52,14 +51,9 @@ public class UndoButtonPanel extends ButtonPanel {
 		return undoButton;
 	}
 
-	/**
-	 * Obtain the handler capable of dealing with button events.
-	 * 
-	 * @return The pacman interactor.
-	 */
 	@Override
-	public IPacmanInteraction getPacmanInteractor() {
-		return this.pacmanInteractor;
+	public UndoablePacmanInteraction getPacmanInteractor() {
+		return (UndoablePacmanInteraction) super.getPacmanInteractor();
 	}
 
 	@Override
@@ -74,20 +68,34 @@ public class UndoButtonPanel extends ButtonPanel {
 	/**
 	 * Redo the last undo'ed move.
 	 */
-	public void redo() {
+	private void redo() {
 		assert invariant();
-		pause();
-		// TODO Implement the actual redo
+		getPacmanInteractor().redo();
 		assert invariant();
+	}
+
+	/**
+	 * @param enable
+	 *            Whether to enable the redo button
+	 */
+	public void toggleRedo(boolean enable) {
+		this.redoButton.setEnabled(enable);
+	}
+
+	/**
+	 * @param enable
+	 *            Whether to enable the undo button
+	 */
+	public void toggleUndo(boolean enable) {
+		this.undoButton.setEnabled(enable);
 	}
 
 	/**
 	 * Undo the last move.
 	 */
-	public void undo() {
+	private void undo() {
 		assert invariant();
-		pause();
-		// TODO Implement the actual undo
+		getPacmanInteractor().undo();
 		assert invariant();
 	}
 }

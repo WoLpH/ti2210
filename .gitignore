@@ -12,7 +12,7 @@ target/
 *.pdf
 
 # Other stuff which is in the repo
-bin
-reports
-jpacman
+/bin
+/reports
+/jpacman
 
