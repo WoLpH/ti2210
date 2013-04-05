@@ -1,16 +1,11 @@
 package org.jpacman.framework.factory;
 
-import org.jpacman.framework.model.Board;
-import org.jpacman.framework.model.Game;
-import org.jpacman.framework.model.Ghost;
-import org.jpacman.framework.model.Player;
 import org.jpacman.framework.model.UndoableBoard;
 import org.jpacman.framework.model.UndoableFood;
 import org.jpacman.framework.model.UndoableGame;
 import org.jpacman.framework.model.UndoableGhost;
 import org.jpacman.framework.model.UndoablePlayer;
 import org.jpacman.framework.model.UndoableWall;
-import org.jpacman.framework.model.Wall;
 import org.jpacman.framework.ui.UndoablePacman;
 
 /**
