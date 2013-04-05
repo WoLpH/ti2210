@@ -64,13 +64,13 @@ public class UndoableGameFactory extends DefaultGameFactory {
 	}
 
 	@Override
-	public Game makeGame() {
+	public UndoableGame makeGame() {
 		this.undoableGame = new UndoableGame(this.undoablePacman);
 		return this.undoableGame;
 	}
 
 	@Override
-	public Ghost makeGhost() {
+	public UndoableGhost makeGhost() {
 		assert getGame() != null;
 		UndoableGhost ghost = new UndoableGhost();
 		getGame().addGhost(ghost);
