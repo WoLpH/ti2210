@@ -6,7 +6,7 @@ import org.jpacman.framework.model.UndoableGame;
  * @author Rick van Hattem <Rick.van.Hattem@Fawo.nl>
  * 
  */
-class UndoablePacmanInteraction extends PacmanInteraction {
+public class UndoablePacmanInteraction extends PacmanInteraction {
 	/**
 	 * Redo the last undoed move.
 	 */
