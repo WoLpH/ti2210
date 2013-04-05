@@ -53,8 +53,7 @@ public class UndoableGame extends Game {
 	private void loadState(GameState state) {
 		this.undoablePacman.eventHandler().stop();
 		state.restoreTo(this);
-		this.undoablePacman.getButtonPanel().toggleUndo(canUndo());
-		this.undoablePacman.getButtonPanel().toggleRedo(canRedo());
+		toggleButtons();
 		notifyViewers();
 	}
 
@@ -79,11 +78,7 @@ public class UndoableGame extends Game {
 			this.stateIndex = saveState(gameState);
 		}
 
-		UndoButtonPanel buttonPanel = this.undoablePacman.getButtonPanel();
-		if (buttonPanel != null) {
-			buttonPanel.toggleUndo(canUndo());
-			buttonPanel.toggleRedo(canRedo());
-		}
+		toggleButtons();
 	}
 
 	/**
@@ -98,6 +93,14 @@ public class UndoableGame extends Game {
 	private int saveState(GameState gameState) {
 		this.states.add(gameState);
 		return this.states.size();
+	}
+
+	private void toggleButtons() {
+		UndoButtonPanel buttonPanel = this.undoablePacman.getButtonPanel();
+		if (buttonPanel != null) {
+			buttonPanel.toggleUndo(canUndo());
+			buttonPanel.toggleRedo(canRedo());
+		}
 	}
 
 	/**
