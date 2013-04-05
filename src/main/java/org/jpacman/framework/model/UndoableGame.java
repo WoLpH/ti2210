@@ -34,14 +34,14 @@ public class UndoableGame extends Game {
 	/**
 	 * @return Wheter we can redo an undo.
 	 */
-	private boolean canRedo() {
+	public boolean canRedo() {
 		return this.stateIndex < this.states.size() - 1;
 	}
 
 	/**
 	 * @return Whether there is a state to undo.
 	 */
-	private boolean canUndo() {
+	public boolean canUndo() {
 		return this.stateIndex > 0;
 	}
 
