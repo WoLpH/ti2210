@@ -23,16 +23,16 @@ import org.junit.Test;
  */
 public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	// Emtpy tile on the board next to the player.
-	protected Tile emptyTile;
+	private Tile emptyTile;
 
 	// Food tile on the board next to the player.
-	protected Tile foodTile;
+	private Tile foodTile;
 
 	// Wall tile on the board next to the player.
 	private Tile wallTile;
 
 	// Player tile on the board, the starting point.
-	protected Tile playerTile;
+	private Tile playerTile;
 
 	// Player tile on the board, the starting point.
 	private Tile ghostTile;
@@ -57,11 +57,11 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	@Before
 	public void setUp() throws FactoryException, InterruptedException {
 		super.setUp();
-		this.emptyTile = tileAt(1, 0);
-		this.foodTile = tileAt(0, 1);
-		this.playerTile = tileAt(1, 1);
-		this.wallTile = tileAt(1, 2);
-		this.ghostTile = tileAt(2, 1);
+		this.setEmptyTile(tileAt(1, 0));
+		this.setFoodTile(tileAt(0, 1));
+		this.setPlayerTile(tileAt(1, 1));
+		this.setWallTile(tileAt(1, 2));
+		this.setGhostTile(tileAt(2, 1));
 	}
 
 	/**
@@ -73,11 +73,11 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		getEngine().start();
 
 		/* Check if the tile is empty and move to it */
-		Assert.assertEquals(null, this.emptyTile.topSprite());
+		Assert.assertEquals(null, this.getEmptyTile().topSprite());
 		movePlayer(Direction.UP);
 
 		/* Check if the player indeed moved and replaced the empty tile */
-		Assert.assertEquals(this.emptyTile, getPlayer().getTile());
+		Assert.assertEquals(this.getEmptyTile(), getPlayer().getTile());
 	}
 
 	/**
@@ -89,18 +89,18 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		getEngine().start();
 
 		/* Check if the tile contains food and move to it */
-		Assert.assertEquals(IBoardInspector.SpriteType.FOOD, this.foodTile
+		Assert.assertEquals(IBoardInspector.SpriteType.FOOD, this.getFoodTile()
 				.topSprite().getSpriteType());
 		movePlayer(Direction.LEFT);
 
 		/* Check if we moved and if we replaced the food */
-		Assert.assertEquals(this.foodTile, getPlayer().getTile());
-		Assert.assertEquals(IBoardInspector.SpriteType.PLAYER, this.foodTile
+		Assert.assertEquals(this.getFoodTile(), getPlayer().getTile());
+		Assert.assertEquals(IBoardInspector.SpriteType.PLAYER, this.getFoodTile()
 				.topSprite().getSpriteType());
 
 		/* Move away and check if we ate the food */
 		movePlayer(Direction.RIGHT);
-		Assert.assertEquals(null, this.foodTile.topSprite());
+		Assert.assertEquals(null, this.getFoodTile().topSprite());
 	}
 
 	/**
@@ -112,12 +112,12 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		getEngine().start();
 
 		/* Check if the tile contains a wall and try to move to it */
-		Assert.assertEquals(IBoardInspector.SpriteType.WALL, this.wallTile
+		Assert.assertEquals(IBoardInspector.SpriteType.WALL, this.getWallTile()
 				.topSprite().getSpriteType());
 		movePlayer(Direction.DOWN);
 
 		/* If we are still at our current position, everything is ok */
-		Assert.assertEquals(this.playerTile, getPlayer().getTile());
+		Assert.assertEquals(this.getPlayerTile(), getPlayer().getTile());
 	}
 
 	/**
@@ -129,7 +129,7 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		getEngine().start();
 
 		/* Check if the tile contains a ghost and try to move to it */
-		Assert.assertEquals(IBoardInspector.SpriteType.GHOST, this.ghostTile
+		Assert.assertEquals(IBoardInspector.SpriteType.GHOST, this.getGhostTile()
 				.topSprite().getSpriteType());
 		movePlayer(Direction.RIGHT);
 
@@ -137,8 +137,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		 * If there is no player at the player tile and the player is now dead and at the ghost
 		 * location, it worked
 		 */
-		Assert.assertEquals(this.ghostTile, getPlayer().getTile());
-		Assert.assertEquals(null, this.playerTile.topSprite());
+		Assert.assertEquals(this.getGhostTile(), getPlayer().getTile());
+		Assert.assertEquals(null, this.getPlayerTile().topSprite());
 		Assert.assertEquals(getEngine().getCurrentState(),
 				PacmanInteraction.MatchState.LOST);
 		/* he's dead Jim */
@@ -163,5 +163,75 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		/* Yes, we are awesome! We've won :D */
 		Assert.assertEquals(getEngine().getCurrentState(),
 				PacmanInteraction.MatchState.WON);
+	}
+
+	/**
+	 * @return the emptyTile
+	 */
+	public Tile getEmptyTile() {
+		return emptyTile;
+	}
+
+	/**
+	 * @param emptyTile the emptyTile to set
+	 */
+	public void setEmptyTile(Tile emptyTile) {
+		this.emptyTile = emptyTile;
+	}
+
+	/**
+	 * @return the foodTile
+	 */
+	public Tile getFoodTile() {
+		return foodTile;
+	}
+
+	/**
+	 * @param foodTile the foodTile to set
+	 */
+	public void setFoodTile(Tile foodTile) {
+		this.foodTile = foodTile;
+	}
+
+	/**
+	 * @return the playerTile
+	 */
+	public Tile getPlayerTile() {
+		return playerTile;
+	}
+
+	/**
+	 * @param playerTile the playerTile to set
+	 */
+	public void setPlayerTile(Tile playerTile) {
+		this.playerTile = playerTile;
+	}
+
+	/**
+	 * @return the wallTile
+	 */
+	public Tile getWallTile() {
+		return wallTile;
+	}
+
+	/**
+	 * @param wallTile the wallTile to set
+	 */
+	public void setWallTile(Tile wallTile) {
+		this.wallTile = wallTile;
+	}
+
+	/**
+	 * @return the ghostTile
+	 */
+	public Tile getGhostTile() {
+		return ghostTile;
+	}
+
+	/**
+	 * @param ghostTile the ghostTile to set
+	 */
+	public void setGhostTile(Tile ghostTile) {
+		this.ghostTile = ghostTile;
 	}
 }

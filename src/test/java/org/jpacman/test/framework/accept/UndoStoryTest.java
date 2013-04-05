@@ -70,11 +70,11 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	public void test_undo_Food() {
 		test_S2_2_PlayerFood();
 		getUI().getGame().undo();
-		Assert.assertEquals(this.foodTile, getPlayer().getTile());
+		Assert.assertEquals(getFoodTile(), getPlayer().getTile());
 
 		getUI().getGame().undo();
-		Assert.assertEquals(this.playerTile, getPlayer().getTile());
-		Assert.assertEquals(IBoardInspector.SpriteType.FOOD, this.foodTile
+		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
+		Assert.assertEquals(IBoardInspector.SpriteType.FOOD, getFoodTile()
 				.topSprite().getSpriteType());
 	}
 
@@ -87,10 +87,10 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	@Test
 	public void test_undo_Move() {
 		test_S2_1_PlayerEmpty();
-		Assert.assertEquals(this.emptyTile, getPlayer().getTile());
+		Assert.assertEquals(getEmptyTile(), getPlayer().getTile());
 		getUI().getGame().undo();
-		Assert.assertEquals(null, this.emptyTile.topSprite());
-		Assert.assertEquals(this.playerTile, getPlayer().getTile());
+		Assert.assertEquals(null, getEmptyTile().topSprite());
+		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
 	}
 
 	/**
@@ -101,11 +101,11 @@ public class UndoStoryTest extends MovePlayerStoryTest {
 	public void test_undo_Start() {
 		getEngine().start();
 
-		Assert.assertEquals(this.playerTile, getPlayer().getTile());
+		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
 
 		getUI().getGame().undo();
 
-		Assert.assertEquals(this.playerTile, getPlayer().getTile());
+		Assert.assertEquals(getPlayerTile(), getPlayer().getTile());
 		Assert.assertEquals(PacmanInteraction.MatchState.PLAYING, getEngine()
 				.getCurrentState());
 	}
