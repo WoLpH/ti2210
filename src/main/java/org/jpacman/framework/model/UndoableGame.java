@@ -51,7 +51,9 @@ public class UndoableGame extends Game {
 	}
 
 	private void loadState(GameState state) {
-		this.undoablePacman.eventHandler().stop();
+		if (this.undoablePacman.eventHandler() != null) {
+			this.undoablePacman.eventHandler().stop();
+		}
 		state.restoreTo(this);
 		toggleButtons();
 		notifyViewers();
