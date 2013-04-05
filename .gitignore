@@ -8,8 +8,11 @@ target/
 .classpath
 .project
 .settings/
-<<<<<<< HEAD
-=======
 .pmd
 *.pdf
->>>>>>> 443b08a34b34a5fbd4d4a30dc5bbb7a2e4088f18
+
+# Other stuff which is in the repo
+bin
+reports
+jpacman
+

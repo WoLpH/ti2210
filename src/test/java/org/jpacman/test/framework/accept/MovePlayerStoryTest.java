@@ -14,12 +14,10 @@ import org.junit.Test;
 /**
  * Acceptance test suite for player moves, exercising JPacman via the ui.
  * 
- * I want to move my Pacman arround on the board; So that I can eat all food and
- * win the game.
+ * I want to move my Pacman arround on the board; So that I can eat all food and win the game.
  * 
- * When asserting the results, the key effects are validated only, as expressed
- * in the "then" clause of the BDD scenarios. Rigorous testing of all relevant
- * effects is done in the unit tests.
+ * When asserting the results, the key effects are validated only, as expressed in the "then" clause
+ * of the BDD scenarios. Rigorous testing of all relevant effects is done in the unit tests.
  * 
  * The test harness from the superclass is reused in this test.
  * 
@@ -130,17 +128,13 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		movePlayer(Direction.RIGHT);
 
 		/*
-		 * If there is no player at the player tile and the player is now dead
-		 * and at the ghost location, it worked
+		 * If there is no player at the player tile and the player is now dead and at the ghost
+		 * location, it worked
 		 */
 		assertEquals(ghostTile, getPlayer().getTile());
 		assertEquals(null, playerTile.topSprite());
-<<<<<<< HEAD
-		assertEquals(getEngine().getCurrentState(), PacmanInteraction.MatchState.LOST);
-=======
 		assertEquals(getEngine().getCurrentState(),
 				PacmanInteraction.MatchState.LOST);
->>>>>>> 443b08a34b34a5fbd4d4a30dc5bbb7a2e4088f18
 		/* he's dead Jim */
 		assertFalse(getPlayer().isAlive());
 	}
@@ -159,16 +153,10 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		movePlayer(Direction.UP);
 		movePlayer(Direction.RIGHT);
 		movePlayer(Direction.RIGHT);
-<<<<<<< HEAD
-		
-		/* Yes, we are awesome! We've won :D */
-		assertEquals(getEngine().getCurrentState(), PacmanInteraction.MatchState.WON);
-=======
 
 		/* Yes, we are awesome! We've won :D */
 		assertEquals(getEngine().getCurrentState(),
 				PacmanInteraction.MatchState.WON);
->>>>>>> 443b08a34b34a5fbd4d4a30dc5bbb7a2e4088f18
 	}
 
 	/**

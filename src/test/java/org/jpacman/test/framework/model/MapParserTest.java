@@ -18,10 +18,20 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 /**
- * test for the factory.MapParser, to run with a mocked Factory
+ * test for the factory.MapParser, to run with a mocked Factory.
  **/
 public class MapParserTest {
 
+	private static final int PLAYER_Y = 0;
+	private static final int PLAYER_X = 0;
+	private static final int GHOST_Y = 0;
+	private static final int GHOST_X = 1;
+	private static final int FOOD_Y = 0;
+	private static final int FOOD_X = 2;
+	private static final int EMPTY_Y = 0;
+	private static final int EMPTY_X = 4;
+	private static final int WALL_Y = 0;
+	private static final int WALL_X = 3;
 	private IGameFactory f = mock(IGameFactory.class);
 	private MapParser mp;
 	private Game game;
@@ -31,30 +41,29 @@ public class MapParserTest {
 	private Food nom;
 
 	/**
-	 * Here I initialize the map on which I want to test the nice weather
-	 * behavior.
+	 * Here I initialize the map on which I want to test the nice weather behavior.
 	 */
 	private String[] map = { "PG.# " };
 	private int width = map[0].length();
 	private int height = map.length;
+	private Board board;
 
 	/**
-	 * @Before Everything is initialized here, and all the things our mocked
-	 *         Factory should are redirected to return the Objects we made
-	 *         ourselves.
+	 * @Before Everything is initialized here, and all the things our mocked Factory should are
+	 *         redirected to return the Objects we made ourselves.
 	 */
 	@Before
 	public void setup() {
 		mp = new MapParser(f);
 		game = new Game();
-		Board b = new Board(width, height);
-		game.setBoard(b);
+		board = new Board(width, height);
+		game.setBoard(board);
 		p = new Player();
 		w = new Wall();
 		g = new Ghost();
 		nom = new Food();
 		Mockito.when(f.makeGame()).thenReturn(game);
-		Mockito.when(f.makeBoard(width, height)).thenReturn(b);
+		Mockito.when(f.makeBoard(width, height)).thenReturn(board);
 		Mockito.when(f.makePlayer()).thenReturn(p);
 		Mockito.when(f.makeWall()).thenReturn(w);
 		Mockito.when(f.makeGhost()).thenReturn(g);
@@ -68,7 +77,7 @@ public class MapParserTest {
 	 */
 	@Test
 	public void testHeight() {
-		assertEquals(1, map.length);
+		assertEquals(map.length, board.getHeight());
 	}
 
 	/**
@@ -76,84 +85,87 @@ public class MapParserTest {
 	 */
 	@Test
 	public void testWidht() {
-		assertEquals(5, map[0].length());
+		assertEquals(map[0].length(), board.getWidth());
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'PLAYER' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'PLAYER' sprite.
 	 * @throws FactoryException
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddPlayer() throws FactoryException {
 		Game test = mp.parseMap(map);
 
-		assertEquals(SpriteType.PLAYER, test.getBoard().tileAt(0, 0)
-				.topSprite().getSpriteType());
+		assertEquals(SpriteType.PLAYER,
+				test.getBoard().tileAt(PLAYER_X, PLAYER_Y).topSprite()
+						.getSpriteType());
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'GHOST' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'GHOST' sprite.
 	 * @throws FactoryException
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddGhost() throws FactoryException {
 		Game test = mp.parseMap(map);
 
-		assertEquals(SpriteType.GHOST, test.getBoard().tileAt(1, 0).topSprite()
-				.getSpriteType());
+		assertEquals(SpriteType.GHOST, test.getBoard().tileAt(GHOST_X, GHOST_Y)
+				.topSprite().getSpriteType());
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'FOOD' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'FOOD' sprite.
 	 * @throws FactoryException
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddFood() throws FactoryException {
 		Game test = mp.parseMap(map);
 
-		assertEquals(SpriteType.FOOD, test.getBoard().tileAt(2, 0).topSprite()
-				.getSpriteType());
+		assertEquals(SpriteType.FOOD, test.getBoard().tileAt(FOOD_X, FOOD_Y)
+				.topSprite().getSpriteType());
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test for
-	 *       the 'WALL' sprite.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test for the 'WALL' sprite.
 	 * @throws FactoryException
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddWall() throws FactoryException {
 		Game test = mp.parseMap(map);
 
-		assertEquals(SpriteType.WALL, test.getBoard().tileAt(3, 0).topSprite()
-				.getSpriteType());
+		assertEquals(SpriteType.WALL, test.getBoard().tileAt(WALL_X, WALL_Y)
+				.topSprite().getSpriteType());
 	}
 
 	/**
-	 * @Test Here we'll test whether the map parses nicely, one for one testing
-	 *       whether every sprite type gets added correctly. Here we test if a
-	 *       tile truly stays empty when we try to add ' ', a.k.a. nothing.
+	 * @Test Here we'll test whether the map parses nicely, one for one testing whether every sprite
+	 *       type gets added correctly. Here we test if a tile truly stays empty when we try to add
+	 *       ' ', a.k.a. nothing.
 	 * @throws FactoryException
+	 *             if input was in wrong format.
 	 */
 	@Test
 	public void testAddEmpty() throws FactoryException {
 		Game test = mp.parseMap(map);
 
-		assertEquals(null, test.getBoard().tileAt(4, 0).topSprite());
+		assertEquals(null, test.getBoard().tileAt(EMPTY_X, EMPTY_Y).topSprite());
 	}
 
 	// Now following: the bad weather behavior tests!
 
 	/**
-	 * @Test Test whether the Parser throws the right exception when we try to
-	 *       initialize an empty map.
+	 * @Test Test whether the Parser throws the right exception when we try to initialize an empty
+	 *       map.
 	 * @throws FactoryException
+	 *             if input was in wrong format.
 	 */
 	@Test(expected = FactoryException.class)
 	public void badMapTest() throws FactoryException {
@@ -162,9 +174,10 @@ public class MapParserTest {
 	}
 
 	/**
-	 * @Test Test whether the Parser throws the right exception when we try to
-	 *       initialize a map with an illegal spriteCode (in this case, 'S').
+	 * @Test Test whether the Parser throws the right exception when we try to initialize a map with
+	 *       an illegal spriteCode (in this case, 'S').
 	 * @throws FactoryException
+	 *             if input was in wrong format.
 	 */
 	@Test(expected = FactoryException.class)
 	public void badCharTest() throws FactoryException {

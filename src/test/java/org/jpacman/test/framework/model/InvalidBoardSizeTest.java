@@ -30,8 +30,7 @@ public class InvalidBoardSizeTest {
 	}
 
 	/**
-	 * The actual test case, we expect failure since we make a board that
-	 * doesn't could never exist.
+	 * The actual test case, we expect failure since we make a board that doesn't could never exist.
 	 */
 	@Test(expected = NegativeArraySizeException.class)
 	public void testTileAtDirection() {
