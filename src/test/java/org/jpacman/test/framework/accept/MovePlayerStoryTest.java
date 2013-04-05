@@ -1,13 +1,11 @@
 package org.jpacman.test.framework.accept;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-
 import org.jpacman.framework.factory.FactoryException;
 import org.jpacman.framework.model.Direction;
 import org.jpacman.framework.model.IBoardInspector;
 import org.jpacman.framework.model.Tile;
 import org.jpacman.framework.ui.PacmanInteraction;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,6 +36,14 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 
 	// Player tile on the board, the starting point.
 	private Tile ghostTile;
+
+	/**
+	 * @param dir
+	 *            The direction to move the player to.
+	 */
+	protected void movePlayer(Direction dir) {
+		getUI().getGame().movePlayer(dir);
+	}
 
 	/**
 	 * Setup the game, given a simpler map to improve controllability.
