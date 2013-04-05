@@ -35,7 +35,7 @@ public class UndoableGameFactory extends DefaultGameFactory {
 	}
 
 	@Override
-	protected Game getGame() {
+	protected UndoableGame getGame() {
 		assert this.undoableGame != null;
 		return this.undoableGame;
 	}
