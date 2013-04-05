@@ -95,8 +95,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 
 		/* Check if we moved and if we replaced the food */
 		Assert.assertEquals(this.getFoodTile(), getPlayer().getTile());
-		Assert.assertEquals(IBoardInspector.SpriteType.PLAYER, this.getFoodTile()
-				.topSprite().getSpriteType());
+		Assert.assertEquals(IBoardInspector.SpriteType.PLAYER, this
+				.getFoodTile().topSprite().getSpriteType());
 
 		/* Move away and check if we ate the food */
 		movePlayer(Direction.RIGHT);
@@ -129,8 +129,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 		getEngine().start();
 
 		/* Check if the tile contains a ghost and try to move to it */
-		Assert.assertEquals(IBoardInspector.SpriteType.GHOST, this.getGhostTile()
-				.topSprite().getSpriteType());
+		Assert.assertEquals(IBoardInspector.SpriteType.GHOST, this
+				.getGhostTile().topSprite().getSpriteType());
 		movePlayer(Direction.RIGHT);
 
 		/*
@@ -173,7 +173,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	}
 
 	/**
-	 * @param emptyTile the emptyTile to set
+	 * @param emptyTile
+	 *            the emptyTile to set
 	 */
 	public void setEmptyTile(Tile emptyTile) {
 		this.emptyTile = emptyTile;
@@ -187,7 +188,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	}
 
 	/**
-	 * @param foodTile the foodTile to set
+	 * @param foodTile
+	 *            the foodTile to set
 	 */
 	public void setFoodTile(Tile foodTile) {
 		this.foodTile = foodTile;
@@ -201,7 +203,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	}
 
 	/**
-	 * @param playerTile the playerTile to set
+	 * @param playerTile
+	 *            the playerTile to set
 	 */
 	public void setPlayerTile(Tile playerTile) {
 		this.playerTile = playerTile;
@@ -215,7 +218,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	}
 
 	/**
-	 * @param wallTile the wallTile to set
+	 * @param wallTile
+	 *            the wallTile to set
 	 */
 	public void setWallTile(Tile wallTile) {
 		this.wallTile = wallTile;
@@ -229,7 +233,8 @@ public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	}
 
 	/**
-	 * @param ghostTile the ghostTile to set
+	 * @param ghostTile
+	 *            the ghostTile to set
 	 */
 	public void setGhostTile(Tile ghostTile) {
 		this.ghostTile = ghostTile;
