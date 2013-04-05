@@ -23,16 +23,16 @@ import org.junit.Test;
  */
 public class MovePlayerStoryTest extends AbstractAcceptanceTest {
 	// Emtpy tile on the board next to the player.
-	private Tile emptyTile;
+	protected Tile emptyTile;
 
 	// Food tile on the board next to the player.
-	private Tile foodTile;
+	protected Tile foodTile;
 
 	// Wall tile on the board next to the player.
 	private Tile wallTile;
 
 	// Player tile on the board, the starting point.
-	private Tile playerTile;
+	protected Tile playerTile;
 
 	// Player tile on the board, the starting point.
 	private Tile ghostTile;
