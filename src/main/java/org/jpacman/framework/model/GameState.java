@@ -3,7 +3,6 @@ package org.jpacman.framework.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map.Entry;
 
 import org.jpacman.framework.model.IBoardInspector.SpriteType;
 
@@ -38,17 +37,37 @@ class GameState {
 	 *            Apply this state to the given game
 	 */
 	void restoreTo(UndoableGame game) {
-		UndoableBoard board = game.getBoard();
-		for (Entry<SpriteType, ArrayList<UndoableTile>> entry : this.tiles
-				.entrySet()) {
-			SpriteType spriteType = entry.getKey();
-			ArrayList<IUndoableSprite> sprites = board.getSprites().get(
-					spriteType);
-			Iterator<UndoableTile> tiles = entry.getValue().iterator();
+		/*
+		 * Always resurrect the player just in case. It's impossible to add points when the player
+		 * is dead and the player sprite will reset the alive status anyhow.
+		 */
+		game.getPlayer().resurrect();
 
-			for (IUndoableSprite sprite : sprites) {
-				sprite.moveTo(game, board.tileAt(tiles.next()));
+		for (SpriteType spriteType : SpriteType.values()) {
+			/*
+			 * Skip the player, we have to process this last since we cannot process food if the
+			 * player is dead
+			 */
+			if (spriteType != SpriteType.PLAYER) {
+				restoreTo(game, spriteType);
 			}
+		}
+
+		restoreTo(game, SpriteType.PLAYER);
+	}
+
+	/**
+	 * @param game
+	 *            Apply this state to the given game
+	 * @param spriteType
+	 *            The sprite type to restore
+	 */
+	void restoreTo(UndoableGame game, SpriteType spriteType) {
+		UndoableBoard board = game.getBoard();
+		/* Match all tiles in our sprite collection with the tiles in the given state */
+		Iterator<UndoableTile> tiles = this.tiles.get(spriteType).iterator();
+		for (IUndoableSprite sprite : board.getSprites().get(spriteType)) {
+			sprite.moveTo(game, board.tileAt(tiles.next()));
 		}
 	}
 }
